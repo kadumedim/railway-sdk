@@ -1,0 +1,24 @@
+{
+  "name": "sdk",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dev": "bun run src/index.ts",
+    "lint": "biome check . --write"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.1.2",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@graphql-codegen/cli": "^5.0.7",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-operations": "^4.6.1",
+    "graphql-request": "^7.2.0"
+  }
+}
