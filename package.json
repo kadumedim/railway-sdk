@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "bun run src/index.ts",
-    "lint": "biome check . --write"
+    "lint": "biome check . --write",
+    "codegen": "graphql-codegen"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",
