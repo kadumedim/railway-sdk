@@ -2,8 +2,9 @@ import { GraphQLClient } from "graphql-request";
 
 const personalToken = Bun.env.RAILWAY_PERSONAL_TOKEN;
 const teamToken = Bun.env.RAILWAY_TEAM_TOKEN;
+const endpoint = "https://backboard.railway.com/graphql/v2";
 
-class APIClient {
+export class APIClient {
   private client: GraphQLClient;
 
   constructor(endpoint: string, token: string) {
@@ -19,5 +20,11 @@ class APIClient {
   }
 }
 
+export function apiClient(token?: string): APIClient {
+  if (!token) {
+    throw new Error("RAILWAY_PERSONAL_TOKEN not set in environment!");
+  }
+  return new APIClient(endpoint, token);
+}
+
 export { personalToken, teamToken };
-export default APIClient;
