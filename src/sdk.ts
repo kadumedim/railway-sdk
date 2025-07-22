@@ -1,5 +1,9 @@
 import { GraphQLClient } from "graphql-request";
-import type { GetMeQuery, GetProjectsQuery } from "./generated/graphql";
+import type {
+  GetMeQuery,
+  GetProjectQuery,
+  GetProjectsQuery,
+} from "./generated/graphql";
 import { getMeQuery } from "./operations/queries/getMe";
 import { getProjectsQuery } from "./operations/queries/getProjects";
 import { getServicesQuery } from "./operations/queries/getServices";
@@ -25,17 +29,23 @@ export class RailwaySDK {
   }
 
   async getMe() {
-    return this.client.request<GetMeQuery>(getMeQuery);
+    const { me } = await this.client.request<GetMeQuery>(getMeQuery);
+    return me;
   }
 
   async getProjects() {
     return this.client.request<GetProjectsQuery>(getProjectsQuery);
   }
 
+  /* Since we don't have a specific query for services, we're using the project query and filtering the results */
   async getServices(projectId: string) {
-    return this.client.request<GetProjectsQuery>(getServicesQuery, {
-      projectId,
-    });
+    const result = await this.client.request<GetProjectQuery>(
+      getServicesQuery,
+      {
+        projectId,
+      },
+    );
+    return result.project?.services?.edges;
   }
 
   async getServiceLogs() {}
