@@ -34,7 +34,9 @@ export class RailwaySDK {
   }
 
   async getProjects() {
-    return this.client.request<GetProjectsQuery>(getProjectsQuery);
+    const result =
+      await this.client.request<GetProjectsQuery>(getProjectsQuery);
+    return result.projects?.edges;
   }
 
   /* Since we don't have a specific query for services, we're using the project query and filtering the results */
