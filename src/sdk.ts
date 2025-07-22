@@ -1,11 +1,12 @@
 import { GraphQLClient } from "graphql-request";
-import type { GetMeQuery } from "./generated/graphql";
+import type { GetMeQuery, GetProjectsQuery } from "./generated/graphql";
 import { getMeQuery } from "./operations/queries/getMe";
+import { getProjectsQuery } from "./operations/queries/getProjects";
+import { getServicesQuery } from "./operations/queries/getServices";
 
 interface SDKConfig {
   endpoint?: string;
-  accountToken?: string;
-  teamToken?: string;
+  accessToken?: string;
 }
 
 export class RailwaySDK {
@@ -15,20 +16,27 @@ export class RailwaySDK {
   constructor(config: SDKConfig) {
     this.config = config;
 
-    this.client = new GraphQLClient(config.endpoint || "https://backboard.railway.com/graphql/v2", {
-      headers: this.getHeaders("account"),
-    });
-  }
-
-  private getHeaders(type: "account" | "team") {
-    const token =
-      type === "account" ? this.config.accountToken : this.config.teamToken;
-
-    if (!token) throw new Error(`${type} token is required`);
-    return { Authorization: `Bearer ${token}` };
+    this.client = new GraphQLClient(
+      config.endpoint || "https://backboard.railway.com/graphql/v2",
+      {
+        headers: { Authorization: `Bearer ${this.config.accessToken}` },
+      },
+    );
   }
 
   async getMe() {
     return this.client.request<GetMeQuery>(getMeQuery);
   }
+
+  async getProjects() {
+    return this.client.request<GetProjectsQuery>(getProjectsQuery);
+  }
+
+  async getServices(projectId: string) {
+    return this.client.request<GetProjectsQuery>(getServicesQuery, {
+      projectId,
+    });
+  }
+
+  async getServiceLogs() {}
 }

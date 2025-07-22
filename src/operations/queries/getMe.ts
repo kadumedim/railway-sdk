@@ -1,5 +1,5 @@
 export const getMeQuery = /* GraphQL */ `
-  query GetMe {
+  query getMe {
     me {
       name
       isConductor
