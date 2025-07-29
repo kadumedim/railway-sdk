@@ -3,6 +3,8 @@ import type {
   CreateApiTokenMutation,
   CreateProjectMutation,
   CreateProjectMutationVariables,
+  CreateServiceMutation,
+  CreateServiceMutationVariables,
   DeleteApiTokenMutation,
   DeleteProjectMutation,
   GetMeQuery,
@@ -17,6 +19,7 @@ import { getMeQuery } from "./operations/queries/getMe";
 import { getProjectsQuery } from "./operations/queries/getProjects";
 import { getServicesQuery } from "./operations/queries/getServices";
 import { getProjectQuery } from "./operations/queries/getProject";
+import { createServiceMutation } from "./operations/mutations/createService";
 
 interface SDKConfig {
   endpoint?: string;
@@ -51,7 +54,9 @@ export class RailwaySDK {
   }
 
   async getProject(id: string) {
-    const result = await this.client.request<GetProjectQuery>(getProjectQuery, { id });
+    const result = await this.client.request<GetProjectQuery>(getProjectQuery, {
+      id,
+    });
     return result.project;
   }
 
@@ -100,5 +105,13 @@ export class RailwaySDK {
       { id },
     );
     return result.projectDelete;
+  }
+
+  async createService(service: CreateServiceMutationVariables) {
+    const result = await this.client.request<CreateServiceMutation>(
+      createServiceMutation,
+      service,
+    );
+    return result.serviceCreate;
   }
 }
