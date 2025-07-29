@@ -4,14 +4,16 @@ async function main() {
   try {
     const sdk = new RailwaySDK({
       accessToken: process.env.RAILWAY_PERSONAL_TOKEN,
-      /*  accessToken: Bun.env.RAILWAY_TEAM_TOKEN, */
+      /* accessToken: Bun.env.RAILWAY_TEAM_TOKEN, */
     });
 
-    const token = await sdk.createApiToken("test");
-    console.log("token:", token);
-    /* const projects = await sdk.getProjects();
+    const me = await sdk.getMe();
+    console.log("me:", me);
 
-    console.log("projects:", projects); */
+    console.log("--------------------------------");
+
+    const projects = await sdk.getProjects();
+    console.log("projects:", projects);
   } catch (err) {
     console.error("Error fetching:", err);
   }

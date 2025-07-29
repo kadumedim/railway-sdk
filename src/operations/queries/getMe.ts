@@ -20,6 +20,19 @@ export const getMeQuery = /* GraphQL */ `
         isPublic
         website
       }
+      teams {
+        edges {
+          node {
+            id
+            name
+            preferredRegion
+            updatedAt
+            createdAt
+            avatar
+            adoptionLevel
+          }
+        }
+      }
     }
   }
 `;
