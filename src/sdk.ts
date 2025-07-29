@@ -13,13 +13,13 @@ import type {
 } from "./generated/graphql";
 import { createApiTokenMutation } from "./operations/mutations/createApiToken";
 import { createProjectMutation } from "./operations/mutations/createProject";
+import { createServiceMutation } from "./operations/mutations/createService";
 import { deleteApiTokenMutation } from "./operations/mutations/deleteApiToken";
 import { deleteProjectMutation } from "./operations/mutations/deleteProject";
 import { getMeQuery } from "./operations/queries/getMe";
+import { getProjectQuery } from "./operations/queries/getProject";
 import { getProjectsQuery } from "./operations/queries/getProjects";
 import { getServicesQuery } from "./operations/queries/getServices";
-import { getProjectQuery } from "./operations/queries/getProject";
-import { createServiceMutation } from "./operations/mutations/createService";
 
 interface SDKConfig {
   endpoint?: string;
