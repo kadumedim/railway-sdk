@@ -16,6 +16,7 @@ import { deleteProjectMutation } from "./operations/mutations/deleteProject";
 import { getMeQuery } from "./operations/queries/getMe";
 import { getProjectsQuery } from "./operations/queries/getProjects";
 import { getServicesQuery } from "./operations/queries/getServices";
+import { getProjectQuery } from "./operations/queries/getProject";
 
 interface SDKConfig {
   endpoint?: string;
@@ -47,6 +48,11 @@ export class RailwaySDK {
     const result =
       await this.client.request<GetProjectsQuery>(getProjectsQuery);
     return result.projects?.edges;
+  }
+
+  async getProject(id: string) {
+    const result = await this.client.request<GetProjectQuery>(getProjectQuery, { id });
+    return result.project;
   }
 
   /* Since we don't have a specific query for services, we're using the project query and filtering the results */
