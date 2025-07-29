@@ -16,8 +16,24 @@ export const createProjectMutation = /* GraphQL */ `
                     description: $description 
                 }
             )
-                {
-                    id
+            {
+                id
+                baseEnvironmentId
+                subscriptionType
+                subscriptionPlanLimit
+                teamId
+                name
+                members {
+                name
+                id
+                email
+                avatar
+                role
                 }
+                isPublic
+                isTempProject
+                expiredAt
+                createdAt
+            }
         }
 `;
