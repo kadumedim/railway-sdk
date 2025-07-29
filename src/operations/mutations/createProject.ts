@@ -19,6 +19,20 @@ export const createProjectMutation = /* GraphQL */ `
             {
                 id
                 baseEnvironmentId
+                baseEnvironment {
+                    id
+                    createdAt
+                    name
+                    updatedAt
+                    meta {
+                        baseBranch
+                        branch
+                        prCommentId
+                        prNumber
+                        prRepo
+                        prTitle
+                    }
+                }
                 subscriptionType
                 subscriptionPlanLimit
                 teamId
