@@ -3,15 +3,19 @@ import type {
   CreateApiTokenMutation,
   CreateProjectMutation,
   CreateProjectMutationVariables,
+  DeleteApiTokenMutation,
+  DeleteProjectMutation,
   GetMeQuery,
   GetProjectQuery,
   GetProjectsQuery,
 } from "./generated/graphql";
 import { createApiTokenMutation } from "./operations/mutations/createApiToken";
+import { createProjectMutation } from "./operations/mutations/createProject";
+import { deleteApiTokenMutation } from "./operations/mutations/deleteApiToken";
+import { deleteProjectMutation } from "./operations/mutations/deleteProject";
 import { getMeQuery } from "./operations/queries/getMe";
 import { getProjectsQuery } from "./operations/queries/getProjects";
 import { getServicesQuery } from "./operations/queries/getServices";
-import { createProjectMutation } from "./operations/mutations/createProject";
 
 interface SDKConfig {
   endpoint?: string;
@@ -68,11 +72,27 @@ export class RailwaySDK {
     return result.apiTokenCreate;
   }
 
+  async deleteApiToken(id: string) {
+    const result = await this.client.request<DeleteApiTokenMutation>(
+      deleteApiTokenMutation,
+      { id },
+    );
+    return result.apiTokenDelete;
+  }
+
   async createProject(project: CreateProjectMutationVariables) {
     const result = await this.client.request<CreateProjectMutation>(
       createProjectMutation,
       project,
     );
     return result.projectCreate;
+  }
+
+  async deleteProject(id: string) {
+    const result = await this.client.request<DeleteProjectMutation>(
+      deleteProjectMutation,
+      { id },
+    );
+    return result.projectDelete;
   }
 }
