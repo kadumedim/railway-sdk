@@ -1,6 +1,8 @@
 import { GraphQLClient } from "graphql-request";
 import type {
   CreateApiTokenMutation,
+  CreateProjectMutation,
+  CreateProjectMutationVariables,
   GetMeQuery,
   GetProjectQuery,
   GetProjectsQuery,
@@ -9,6 +11,7 @@ import { createApiTokenMutation } from "./operations/mutations/createApiToken";
 import { getMeQuery } from "./operations/queries/getMe";
 import { getProjectsQuery } from "./operations/queries/getProjects";
 import { getServicesQuery } from "./operations/queries/getServices";
+import { createProjectMutation } from "./operations/mutations/createProject";
 
 interface SDKConfig {
   endpoint?: string;
@@ -63,5 +66,13 @@ export class RailwaySDK {
       { name, teamId },
     );
     return result.apiTokenCreate;
+  }
+
+  async createProject(project: CreateProjectMutationVariables) {
+    const result = await this.client.request<CreateProjectMutation>(
+      createProjectMutation,
+      project,
+    );
+    return result.projectCreate;
   }
 }
