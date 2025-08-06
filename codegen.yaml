@@ -1,5 +1,5 @@
 schema: 'https://backboard.railway.com/graphql/v2'
-documents: './src/operations/**/*.ts' # Path to GraphQL operation files
+documents: './src/wrappers/**/*.ts' # Path to GraphQL operation files
 overwrite: true
 generates:
   src/generated/graphql.d.ts:
