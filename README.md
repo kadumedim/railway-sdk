@@ -38,6 +38,16 @@ const newProject = await roundhouse.project.createProject({
 
 // Get services for a project
 const services = await roundhouse.service.getServices(projectId);
+
+// Create a volume for persistent storage
+const volume = await roundhouse.volume.createVolume({
+  projectId: newProject.id,
+  mountPath: '/data',
+  serviceId: services[0].node.id,
+  environmentId: 'production'
+});
+
+console.log('Created volume:', volume.name);
 ```
 
 ## API Reference
@@ -57,6 +67,10 @@ const services = await roundhouse.service.getServices(projectId);
 - `roundhouse.service.getServices(projectId)` - Get services for project
 - `roundhouse.service.createService(data)` - Create new service
 - `roundhouse.service.getServiceLogs()` - Get service logs (coming soon)
+
+### Volume Operations
+- `roundhouse.volume.createVolume(data)` - Create new volume
+- `roundhouse.volume.deleteVolume(volumeId)` - Delete volume
 
 ## Configuration
 
