@@ -39,10 +39,6 @@ const newProject = await roundhouse.project.createProject({
 const services = await roundhouse.service.getServices(projectId);
 ```
 
-## Workspace Requirements
-
-Many destructive and constructive operations (like creating projects, services, or API tokens) require a workspace ID. You can obtain your workspace IDs by calling `roundhouse.account.getMe()`, which returns a list of all workspaces (teams) you have access to.
-
 ## API Reference
 
 ### Account Operations
@@ -69,6 +65,10 @@ const roundhouse = new Roundhouse({
   endpoint: 'https://backboard.railway.com/graphql/v2' // Optional, defaults to Railway's endpoint
 });
 ```
+
+## Workspace Requirements
+
+Many destructive and constructive operations (like creating projects, services, or API tokens) require a workspace ID. You can obtain your workspace IDs by calling `roundhouse.account.getMe()`, which returns a list of all workspaces (teams) you have access to.
 
 ## Development
 
