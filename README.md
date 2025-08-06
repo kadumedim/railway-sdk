@@ -68,7 +68,7 @@ const roundhouse = new Roundhouse({
 
 ## Workspace Requirements
 
-Many destructive and constructive operations (like creating projects, services, or API tokens) require a workspace ID. You can obtain your workspace IDs by calling `roundhouse.account.getMe()`, which returns a list of all workspaces (teams) you have access to.
+Many destructive and constructive operations (like creating projects, services...) require a workspace ID. You can obtain your workspace IDs by calling `roundhouse.account.getMe()`, which returns a list of all workspaces (teams) you have access to.
 
 ## Development
 
