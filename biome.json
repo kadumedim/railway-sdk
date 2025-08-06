@@ -15,7 +15,7 @@
   },
   "linter": {
     "enabled": true,
-    "includes": ["**", "!**/src/generated/graphql.d.ts"],
+    "includes": ["**", "!**/src/generated/graphql.d.ts", "!**/dist/**"],
     "rules": {
       "recommended": true,
       "style": {
