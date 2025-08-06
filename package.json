@@ -1,14 +1,28 @@
 {
-  "name": "sdk",
-  "module": "index.ts",
+  "name": "@railway/roundhouse",
+  "version": "0.1.0",
+  "description": "Wrapper for the Railway public API",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "type": "module",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "tsc",
     "dev": "bun run src/index.ts",
     "lint": "biome check . --write",
     "codegen": "graphql-codegen"
   },
+  "author": "Carlos Medim <kadumedim123@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kadumedim/roundhouse.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kadumedim/roundhouse/issues"
+  },
+  "homepage": "https://github.com/kadumedim/roundhouse#readme",
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",
     "@types/bun": "latest"
@@ -21,5 +35,8 @@
     "@graphql-codegen/typescript": "^4.1.6",
     "@graphql-codegen/typescript-operations": "^4.6.1",
     "graphql-request": "^7.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
