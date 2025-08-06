@@ -8,10 +8,12 @@
   "type": "module",
   "private": false,
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "dev": "bun run src/index.ts",
     "lint": "biome check . --write",
-    "codegen": "graphql-codegen"
+    "codegen": "graphql-codegen",
+    "prepublishOnly": "bun run build",
+    "clean": "rm -rf dist"
   },
   "author": "Carlos Medim <kadumedim123@gmail.com>",
   "license": "MIT",
@@ -23,6 +25,15 @@
     "url": "https://github.com/kadumedim/roundhouse/issues"
   },
   "homepage": "https://github.com/kadumedim/roundhouse#readme",
+  "keywords": [
+    "railway",
+    "roundhouse",
+    "sdk",
+    "api",
+    "typescript",
+    "graphql",
+    "wrapper"
+  ],
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",
     "@types/bun": "latest"
