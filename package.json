@@ -7,6 +7,10 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "private": false,
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "dev": "bun run src/index.ts",
