@@ -100,11 +100,6 @@ class Service {
     );
     return result.serviceCreate;
   }
-
-  async getServiceLogs() {
-    // TODO: Implement when wrapper is available
-    throw new Error("Not implemented yet");
-  }
 }
 
 export class Roundhouse {
