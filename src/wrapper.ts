@@ -13,12 +13,12 @@ import type {
 } from "./generated/graphql";
 import { account, project, service } from "./modules";
 
-interface WrapperConfig {
+export interface RoundHouseConfig {
   endpoint?: string;
   accessToken?: string;
 }
 
-class AccountAPI {
+class Account {
   constructor(private client: GraphQLClient) {}
 
   async getMe() {
@@ -43,7 +43,7 @@ class AccountAPI {
   }
 }
 
-class ProjectAPI {
+class Project {
   constructor(private client: GraphQLClient) {}
 
   async getProjects() {
@@ -80,7 +80,7 @@ class ProjectAPI {
   }
 }
 
-class ServiceAPI {
+class Service{
   constructor(private client: GraphQLClient) {}
 
   async getServices(projectId: string) {
@@ -109,13 +109,13 @@ class ServiceAPI {
 
 export class Roundhouse {
   private client: GraphQLClient;
-  private config: WrapperConfig;
+  private config: RoundHouseConfig;
 
-  public readonly account: AccountAPI;
-  public readonly project: ProjectAPI;
-  public readonly service: ServiceAPI;
+  public readonly account: Account;
+  public readonly project: Project;
+  public readonly service: Service;
 
-  constructor(config: WrapperConfig) {
+  constructor(config: RoundHouseConfig) {
     this.config = config;
 
     this.client = new GraphQLClient(
@@ -125,9 +125,9 @@ export class Roundhouse {
       },
     );
 
-    // Initialize API modules
-    this.account = new AccountAPI(this.client);
-    this.project = new ProjectAPI(this.client);
-    this.service = new ServiceAPI(this.client);
+    // Initialize modules
+    this.account = new Account(this.client);
+    this.project = new Project(this.client);
+    this.service = new Service(this.client);
   }
 }
