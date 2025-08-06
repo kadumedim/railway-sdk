@@ -5,17 +5,40 @@ import type {
   CreateProjectMutationVariables,
   CreateServiceMutation,
   CreateServiceMutationVariables,
+  CreateVolumeMutation,
+  CreateVolumeMutationVariables,
   DeleteApiTokenMutation,
   DeleteProjectMutation,
+  DeleteVolumeMutation,
   GetMeQuery,
   GetProjectQuery,
   GetProjectsQuery,
 } from "./generated/graphql";
-import { account, project, service } from "./modules";
+import { account, project, service, volume } from "./modules";
 
 export interface RoundHouseConfig {
   endpoint?: string;
   accessToken?: string;
+}
+
+class Volume {
+  constructor(private client: GraphQLClient) {}
+
+  async createVolume(volumeData: CreateVolumeMutationVariables) {
+    const result = await this.client.request<CreateVolumeMutation>(
+      volume.createVolumeMutation,
+      volumeData,
+    );
+    return result.volumeCreate;
+  }
+
+  async deleteVolume(volumeId: string) {
+    const result = await this.client.request<DeleteVolumeMutation>(
+      volume.deleteVolumeMutation,
+      { volumeId },
+    );
+    return result.volumeDelete;
+  }
 }
 
 class Account {
@@ -109,6 +132,7 @@ export class Roundhouse {
   public readonly account: Account;
   public readonly project: Project;
   public readonly service: Service;
+  public readonly volume: Volume;
 
   constructor(config: RoundHouseConfig) {
     this.config = config;
@@ -124,5 +148,6 @@ export class Roundhouse {
     this.account = new Account(this.client);
     this.project = new Project(this.client);
     this.service = new Service(this.client);
+    this.volume = new Volume(this.client);
   }
 }
