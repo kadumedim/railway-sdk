@@ -16,7 +16,7 @@ import type {
 } from "./generated/graphql";
 import { account, project, service, volume } from "./modules";
 
-export interface RoundHouseConfig {
+export interface SDKConfig {
   endpoint?: string;
   accessToken?: string;
 }
@@ -125,16 +125,16 @@ class Service {
   }
 }
 
-export class Roundhouse {
+export class RailwaySDK {
   private client: GraphQLClient;
-  private config: RoundHouseConfig;
+  private config: SDKConfig;
 
   public readonly account: Account;
   public readonly project: Project;
   public readonly service: Service;
   public readonly volume: Volume;
 
-  constructor(config: RoundHouseConfig) {
+  constructor(config: SDKConfig) {
     this.config = config;
 
     this.client = new GraphQLClient(

@@ -1,2 +1,2 @@
-export type { RoundHouseConfig } from "./wrapper";
-export { Roundhouse } from "./wrapper";
+export type { SDKConfig } from "./wrapper";
+export { RailwaySDK } from "./wrapper";

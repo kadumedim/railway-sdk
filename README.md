@@ -1,46 +1,46 @@
-# Railway Roundhouse
+# Railway SDK
 
-A type-safe wrapper for interacting with Railway's GraphQL API.
+A community-maintained type-safe wrapper for interacting with Railway's GraphQL API.
 
 ## Installation
 
 ```bash
-npm install railway-roundhouse
+npm install railway-sdk
 # or
-yarn add railway-roundhouse
+yarn add railway-sdk
 # or
-bun add railway-roundhouse
+bun add railway-sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import { Roundhouse } from 'railway-roundhouse';
+import { RailwaySDK } from 'railway-sdk';
 
-const roundhouse = new Roundhouse({
+const sdk = new RailwaySDK({
   // This can be either your team token or your personal token
   accessToken: 'your-railway-access-token'
 });
 
 // Get current user and available workspaces
 // (this function doesn't work if your access token is a team token!)
-const me = await roundhouse.account.getMe();
+const me = await sdk.account.getMe();
 
 // Access workspace IDs from the response
 const workspaces = me.teams.edges.map(edge => edge.node);
 console.log('Available workspaces:', workspaces.map(w => ({ id: w.id, name: w.name })));
 
 // Use a workspace ID for operations that require it
-const newProject = await roundhouse.project.createProject({
+const newProject = await sdk.project.createProject({
   teamId: workspaces[0].id, // Use the workspace ID here
   name: 'My New Project'
 });
 
 // Get services for a project
-const services = await roundhouse.service.getServices(projectId);
+const services = await sdk.service.getServices(projectId);
 
 // Create a volume for persistent storage
-const volume = await roundhouse.volume.createVolume({
+const volume = await sdk.volume.createVolume({
   projectId: newProject.id,
   mountPath: '/data',
   serviceId: services[0].node.id,
@@ -53,29 +53,29 @@ console.log('Created volume:', volume.name);
 ## API Reference
 
 ### Account Operations
-- `roundhouse.account.getMe()` - Get current user profile
-- `roundhouse.account.createApiToken(name, teamId?)` - Create API token
-- `roundhouse.account.deleteApiToken(id)` - Delete API token
+- `sdk.account.getMe()` - Get current user profile
+- `sdk.account.createApiToken(name, teamId?)` - Create API token
+- `sdk.account.deleteApiToken(id)` - Delete API token
 
 ### Project Operations
-- `roundhouse.project.getProjects()` - Get all projects
-- `roundhouse.project.getProject(id)` - Get specific project
-- `roundhouse.project.createProject(data)` - Create new project
-- `roundhouse.project.deleteProject(id)` - Delete project
+- `sdk.project.getProjects()` - Get all projects
+- `sdk.project.getProject(id)` - Get specific project
+- `sdk.project.createProject(data)` - Create new project
+- `sdk.project.deleteProject(id)` - Delete project
 
 ### Service Operations
-- `roundhouse.service.getServices(projectId)` - Get services for project
-- `roundhouse.service.createService(data)` - Create new service
-- `roundhouse.service.getServiceLogs()` - Get service logs (coming soon)
+- `sdk.service.getServices(projectId)` - Get services for project
+- `sdk.service.createService(data)` - Create new service
+- `sdk.service.getServiceLogs()` - Get service logs (coming soon)
 
 ### Volume Operations
-- `roundhouse.volume.createVolume(data)` - Create new volume
-- `roundhouse.volume.deleteVolume(volumeId)` - Delete volume
+- `sdk.volume.createVolume(data)` - Create new volume
+- `sdk.volume.deleteVolume(volumeId)` - Delete volume
 
 ## Configuration
 
 ```typescript
-const roundhouse = new Roundhouse({
+const sdk = new RailwaySDK({
   accessToken: 'your-token', // Required
   endpoint: 'https://backboard.railway.com/graphql/v2' // Optional, defaults to Railway's endpoint
 });
@@ -83,7 +83,7 @@ const roundhouse = new Roundhouse({
 
 ## Workspace Requirements
 
-Many destructive and constructive operations (like creating projects, services...) require a workspace ID. You can obtain your workspace IDs by calling `roundhouse.account.getMe()`, which returns a list of all workspaces (teams) you have access to.
+Many destructive and constructive operations (like creating projects, services...) require a workspace ID. You can obtain your workspace IDs by calling `sdk.account.getMe()`, which returns a list of all workspaces (teams) you have access to.
 
 ## Development
 

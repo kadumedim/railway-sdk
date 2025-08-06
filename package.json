@@ -1,7 +1,7 @@
 {
-  "name": "railway-roundhouse",
+  "name": "railway-sdk",
   "version": "0.1.2",
-  "description": "Wrapper for the Railway public API",
+  "description": "Community-maintained wrapper for the Railway public API",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -23,15 +23,14 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kadumedim/roundhouse.git"
+    "url": "https://github.com/kadumedim/railway-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/kadumedim/roundhouse/issues"
+    "url": "https://github.com/kadumedim/railway-sdk/issues"
   },
-  "homepage": "https://github.com/kadumedim/roundhouse#readme",
+  "homepage": "https://github.com/kadumedim/railway-sdk#readme",
   "keywords": [
     "railway",
-    "roundhouse",
     "sdk",
     "api",
     "typescript",
