@@ -101,10 +101,6 @@ bun run lint
 bun run codegen
 ```
 
-## License
-
-MIT
-
 ## Coming Soon™
 
 - **Response normalization**: Flatten the GraphQL response structure to remove the `edges` and `nodes` wrapper objects. Instead of `me.teams.edges.map(edge => edge.node)`, you'll be able to work directly with `me.teams`.
@@ -112,3 +108,7 @@ MIT
 - **Better type system**: Improve the type definitions to provide more specific, developer-friendly types instead of relying solely on the auto-generated GraphQL query types from codegen.
 
 - **Subscriptions**: Real-time updates on Railway resources like deployments, events, and log streaming.
+
+## License
+
+MIT
