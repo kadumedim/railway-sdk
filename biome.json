@@ -15,6 +15,7 @@
   },
   "linter": {
     "enabled": true,
+    "includes": ["**", "!**/src/generated/graphql.d.ts"],
     "rules": {
       "recommended": true,
       "style": {
