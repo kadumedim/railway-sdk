@@ -1,27 +1,28 @@
 # Railway Roundhouse
 
-Official Railway Roundhouse SDK for Node.js and TypeScript. A modern, type-safe SDK for interacting with Railway's GraphQL API.
+A type-safe wrapper for interacting with Railway's GraphQL API.
 
 ## Installation
 
 ```bash
-npm install @railway/roundhouse
+npm install railway-roundhouse
 # or
-yarn add @railway/roundhouse
+yarn add railway-roundhouse
 # or
-bun add @railway/roundhouse
+bun add railway-roundhouse
 ```
 
 ## Quick Start
 
 ```typescript
-import { Roundhouse } from '@railway/roundhouse';
+import { Roundhouse } from 'railway-roundhouse';
 
 const roundhouse = new Roundhouse({
+  // This can be either your team token or your personal token
   accessToken: 'your-railway-access-token'
 });
 
-// Get current user
+// Get current user and lists all workspaces
 const me = await roundhouse.account.getMe();
 
 // Get all projects

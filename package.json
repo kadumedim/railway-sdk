@@ -1,5 +1,5 @@
 {
-  "name": "@railway/roundhouse",
+  "name": "railway-roundhouse",
   "version": "0.1.0",
   "description": "Wrapper for the Railway public API",
   "main": "./dist/index.js",
