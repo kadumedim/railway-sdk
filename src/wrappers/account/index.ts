@@ -1,3 +1,3 @@
 export { createApiTokenMutation } from "./createApiToken";
 export { deleteApiTokenMutation } from "./deleteApiToken";
-export { getMeQuery } from "./getMe"; 
+export { getMeQuery } from "./getMe";
