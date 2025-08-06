@@ -22,21 +22,26 @@ const roundhouse = new Roundhouse({
   accessToken: 'your-railway-access-token'
 });
 
-// Get current user and lists all workspaces
+// Get current user and available workspaces
 const me = await roundhouse.account.getMe();
 
-// Get all projects
-const projects = await roundhouse.project.getProjects();
+// Access workspace IDs from the response
+const workspaces = me.teams.edges.map(edge => edge.node);
+console.log('Available workspaces:', workspaces.map(w => ({ id: w.id, name: w.name })));
 
-// Create a new project
+// Use a workspace ID for operations that require it
 const newProject = await roundhouse.project.createProject({
-  teamId: "my-workspace-id",
-  name: 'My Awesome Project'
+  teamId: workspaces[0].id, // Use the workspace ID here
+  name: 'My New Project'
 });
 
 // Get services for a project
 const services = await roundhouse.service.getServices(projectId);
 ```
+
+## Workspace Requirements
+
+Many destructive and constructive operations (like creating projects, services, or API tokens) require a workspace ID. You can obtain your workspace IDs by calling `roundhouse.account.getMe()`, which returns a list of all workspaces (teams) you have access to.
 
 ## API Reference
 
