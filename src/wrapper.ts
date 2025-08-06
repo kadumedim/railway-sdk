@@ -80,7 +80,7 @@ class Project {
   }
 }
 
-class Service{
+class Service {
   constructor(private client: GraphQLClient) {}
 
   async getServices(projectId: string) {
