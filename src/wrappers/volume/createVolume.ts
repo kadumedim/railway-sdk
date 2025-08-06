@@ -10,6 +10,9 @@ export const createVolumeMutation = /* GraphQL */ `
             input: {mountPath: $mountPath, projectId: $projectId, serviceId: $serviceId, environmentId: $environmentId}
         )
         {
+            id
+            name
+            createdAt
             volumeInstances {
                 edges {
                     node {
