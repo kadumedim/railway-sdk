@@ -11,15 +11,15 @@ import type {
   GetProjectQuery,
   GetProjectsQuery,
 } from "./generated/graphql";
-import { createApiTokenMutation } from "./operations/mutations/createApiToken";
-import { createProjectMutation } from "./operations/mutations/createProject";
-import { createServiceMutation } from "./operations/mutations/createService";
-import { deleteApiTokenMutation } from "./operations/mutations/deleteApiToken";
-import { deleteProjectMutation } from "./operations/mutations/deleteProject";
-import { getMeQuery } from "./operations/queries/getMe";
-import { getProjectQuery } from "./operations/queries/getProject";
-import { getProjectsQuery } from "./operations/queries/getProjects";
-import { getServicesQuery } from "./operations/queries/getServices";
+import { createApiTokenMutation } from "./wrappers/account/createApiToken";
+import { createProjectMutation } from "./wrappers/project/createProject";
+import { createServiceMutation } from "./wrappers/service/createService";
+import { deleteApiTokenMutation } from "./wrappers/account/deleteApiToken";
+import { deleteProjectMutation } from "./wrappers/project/deleteProject";
+import { getMeQuery } from "./wrappers/account/getMe";
+import { getProjectQuery } from "./wrappers/project/getProject";
+import { getProjectsQuery } from "./wrappers/project/getProjects";
+import { getServicesQuery } from "./wrappers/service/getServices";
 
 interface SDKConfig {
   endpoint?: string;
