@@ -29,6 +29,7 @@ const projects = await roundhouse.project.getProjects();
 
 // Create a new project
 const newProject = await roundhouse.project.createProject({
+  teamId: "my-workspace-id",
   name: 'My Awesome Project'
 });
 
