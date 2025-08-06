@@ -23,6 +23,7 @@ const roundhouse = new Roundhouse({
 });
 
 // Get current user and available workspaces
+// (this function doesn't work if your access token is a team token!)
 const me = await roundhouse.account.getMe();
 
 // Access workspace IDs from the response
@@ -96,3 +97,4 @@ MIT
 
 - **Better type system**: Improve the type definitions to provide more specific, developer-friendly types instead of relying solely on the auto-generated GraphQL query types from codegen.
 
+- **Subscriptions**: Real-time updates on Railway resources like deployments, events, and log streaming.

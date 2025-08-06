@@ -11,6 +11,7 @@ export const getProjectsQuery = /* GraphQL */ `
           isPublic
           isTempProject
           updatedAt
+          teamId
         }
       }
     }
