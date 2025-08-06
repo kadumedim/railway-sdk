@@ -37,6 +37,7 @@
       "quoteStyle": "double"
     }
   },
+
   "assist": {
     "enabled": true,
     "actions": {
