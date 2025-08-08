@@ -1,6 +1,6 @@
 {
   "name": "railway-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Community-maintained wrapper for the Railway public API",
   "exports": {
     ".": {
