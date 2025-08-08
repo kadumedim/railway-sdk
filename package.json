@@ -2,8 +2,13 @@
   "name": "railway-sdk",
   "version": "0.1.0",
   "description": "Community-maintained wrapper for the Railway public API",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "type": "module",
   "private": false,
@@ -11,8 +16,9 @@
     "dist/**/*",
     "README.md"
   ],
+  "sideEffects": false,
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "bun run codegen && bunx unbuild",
     "dev": "bun run src/index.ts",
     "lint": "biome check . --write",
     "codegen": "graphql-codegen",
@@ -39,13 +45,12 @@
   ],
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",
-    "@types/bun": "latest",
     "@graphql-codegen/cli": "^5.0.7",
     "@graphql-codegen/typescript": "^4.1.6",
-    "@graphql-codegen/typescript-operations": "^4.6.1"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
+    "@graphql-codegen/typescript-operations": "^4.6.1",
+    "@types/bun": "latest",
+    "typescript": "^5.9.2",
+    "unbuild": "^3.6.0"
   },
   "dependencies": {
     "graphql-request": "^7.2.0"
