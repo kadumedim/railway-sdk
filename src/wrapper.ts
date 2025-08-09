@@ -50,9 +50,14 @@ export class GraphQLClient {
       throw new Error(`❌ Request failed! status: ${response.status}`);
     }
 
-    const result = (await response.json()) as { data: T; errors?: Array<{ message: string }> };
+    const result = (await response.json()) as {
+      data: T;
+      errors?: Array<{ message: string }>;
+    };
 
     if (result.errors && result.errors.length > 0) {
+      console.error(JSON.stringify(result, null, 2));
+      console.error(this.headers);
       throw new Error(
         `❌ GraphQL error: ${result.errors.map((e) => e.message).join(", ")}`,
       );
@@ -185,9 +190,7 @@ export class RailwaySDK {
 
     this.client = new GraphQLClient(
       config.endpoint || "https://backboard.railway.com/graphql/v2",
-      {
-        headers: { Authorization: `Bearer ${this.config.accessToken}` },
-      },
+      { accessToken: this.config.accessToken }
     );
 
     // Initialize modules
