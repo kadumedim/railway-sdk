@@ -1,4 +1,3 @@
-import { GraphQLClient } from "graphql-request";
 import type {
   CreateApiTokenMutation,
   CreateProjectMutation,
@@ -19,6 +18,47 @@ import { account, project, service, volume } from "./modules";
 export interface SDKConfig {
   endpoint?: string;
   accessToken?: string;
+  headers?: Record<string, string>;
+}
+
+export class GraphQLClient {
+  private endpoint: string;
+  private headers: Record<string, string>;
+
+  constructor(endpoint: string, config?: SDKConfig) {
+    this.endpoint = endpoint;
+    this.headers = {
+      Authorization: `Bearer ${config?.accessToken}`,
+      "Content-Type": "application/json",
+    };
+  }
+
+  async request<T = unknown>(
+    query: string,
+    variables?: Record<string, unknown>,
+  ): Promise<T> {
+    const response = await fetch(this.endpoint, {
+      method: "POST",
+      headers: this.headers,
+      body: JSON.stringify({
+        query,
+        variables,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`❌ Request failed! status: ${response.status}`);
+    }
+
+    const result = (await response.json()) as { data: T };
+
+    if (!result.data) {
+      console.error(JSON.stringify(result, null, 2));
+      throw new Error("❌ GraphQL response missing data");
+    }
+
+    return result.data;
+  }
 }
 
 class Volume {

@@ -1,39 +1,39 @@
 {
   "name": "railway-sdk",
   "version": "0.1.1",
-  "description": "Community-maintained wrapper for the Railway public API",
+  "author": "Carlos Medim <kadumedim123@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kadumedim/railway-sdk.git"
+  },
+  "module": "./dist/index.mjs",
+  "devDependencies": {
+    "@biomejs/biome": "^2.1.2",
+    "@graphql-codegen/cli": "^5.0.7",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-operations": "^4.6.1",
+    "@types/bun": "latest",
+    "typescript": "^5.9.2",
+    "unbuild": "^3.6.0",
+    "zod": "^4.0.17"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
     }
   },
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "type": "module",
-  "private": false,
+  "bugs": {
+    "url": "https://github.com/kadumedim/railway-sdk/issues"
+  },
+  "description": "Community-maintained wrapper for the Railway public API",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "files": [
     "dist/**/*",
     "README.md"
   ],
-  "sideEffects": false,
-  "scripts": {
-    "build": "bun run codegen && bunx unbuild",
-    "dev": "bun run src/index.ts",
-    "lint": "biome check . --write",
-    "codegen": "graphql-codegen",
-    "prepublishOnly": "bun run build",
-    "clean": "rm -rf dist"
-  },
-  "author": "Carlos Medim <kadumedim123@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kadumedim/railway-sdk.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kadumedim/railway-sdk/issues"
-  },
   "homepage": "https://github.com/kadumedim/railway-sdk#readme",
   "keywords": [
     "railway",
@@ -43,19 +43,17 @@
     "graphql",
     "wrapper"
   ],
-  "devDependencies": {
-    "@biomejs/biome": "^2.1.2",
-    "@graphql-codegen/cli": "^5.0.7",
-    "@graphql-codegen/typescript": "^4.1.6",
-    "@graphql-codegen/typescript-operations": "^4.6.1",
-    "@types/bun": "latest",
-    "typescript": "^5.9.2",
-    "unbuild": "^3.6.0"
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "bun run codegen && bunx unbuild",
+    "dev": "bun run src/index.ts",
+    "lint": "biome check . --write",
+    "codegen": "graphql-codegen",
+    "prepublishOnly": "bun run build",
+    "clean": "rm -rf dist"
   },
-  "dependencies": {
-    "graphql-request": "^7.2.0"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  }
+  "sideEffects": false,
+  "type": "module",
+  "types": "./dist/index.d.ts"
 }
