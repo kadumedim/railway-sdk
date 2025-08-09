@@ -5,5 +5,5 @@ export default defineBuildConfig({
   clean: true,
   declaration: true,
   failOnWarn: false,
-  sourcemap: true,
+  sourcemap: false,
 });
