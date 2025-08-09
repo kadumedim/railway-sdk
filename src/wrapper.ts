@@ -50,11 +50,17 @@ export class GraphQLClient {
       throw new Error(`❌ Request failed! status: ${response.status}`);
     }
 
-    const result = (await response.json()) as { data: T };
+    const result = (await response.json()) as { data: T; errors?: Array<{ message: string }> };
+
+    if (result.errors && result.errors.length > 0) {
+      throw new Error(
+        `❌ GraphQL error: ${result.errors.map((e) => e.message).join(", ")}`,
+      );
+    }
 
     if (!result.data) {
       console.error(JSON.stringify(result, null, 2));
-      throw new Error("❌ GraphQL response missing data");
+      throw new Error("❌ GraphQL response missing data!");
     }
 
     return result.data;
