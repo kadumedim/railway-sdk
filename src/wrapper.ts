@@ -62,7 +62,9 @@ export class GraphQLClient {
     }
 
     if (!result.data) {
-      throw new Error(`❌ GraphQL response missing data! ${JSON.stringify(result, null, 2)}`);
+      throw new Error(
+        `❌ GraphQL response missing data! ${JSON.stringify(result, null, 2)}`,
+      );
     }
 
     return result.data;
@@ -187,7 +189,7 @@ export class RailwaySDK {
 
     this.client = new GraphQLClient(
       config.endpoint || "https://backboard.railway.com/graphql/v2",
-      { accessToken: this.config.accessToken }
+      { accessToken: this.config.accessToken },
     );
 
     // Initialize modules
