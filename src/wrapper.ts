@@ -56,16 +56,13 @@ export class GraphQLClient {
     };
 
     if (result.errors && result.errors.length > 0) {
-      console.error(JSON.stringify(result, null, 2));
-      console.error(this.headers);
       throw new Error(
         `❌ GraphQL error: ${result.errors.map((e) => e.message).join(", ")}`,
       );
     }
 
     if (!result.data) {
-      console.error(JSON.stringify(result, null, 2));
-      throw new Error("❌ GraphQL response missing data!");
+      throw new Error(`❌ GraphQL response missing data! ${JSON.stringify(result, null, 2)}`);
     }
 
     return result.data;
