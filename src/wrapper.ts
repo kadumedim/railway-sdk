@@ -1,4 +1,3 @@
-import { GraphQLClient } from "graphql-request";
 import type {
   CreateApiTokenMutation,
   CreateProjectMutation,
@@ -19,6 +18,57 @@ import { account, project, service, volume } from "./modules";
 export interface SDKConfig {
   endpoint?: string;
   accessToken?: string;
+  headers?: Record<string, string>;
+}
+
+export class GraphQLClient {
+  private endpoint: string;
+  private headers: Record<string, string>;
+
+  constructor(endpoint: string, config?: SDKConfig) {
+    this.endpoint = endpoint;
+    this.headers = {
+      Authorization: `Bearer ${config?.accessToken}`,
+      "Content-Type": "application/json",
+    };
+  }
+
+  async request<T = unknown>(
+    query: string,
+    variables?: Record<string, unknown>,
+  ): Promise<T> {
+    const response = await fetch(this.endpoint, {
+      method: "POST",
+      headers: this.headers,
+      body: JSON.stringify({
+        query,
+        variables,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`❌ Request failed! status: ${response.status}`);
+    }
+
+    const result = (await response.json()) as {
+      data: T;
+      errors?: Array<{ message: string }>;
+    };
+
+    if (result.errors && result.errors.length > 0) {
+      throw new Error(
+        `❌ GraphQL error: ${result.errors.map((e) => e.message).join(", ")}`,
+      );
+    }
+
+    if (!result.data) {
+      throw new Error(
+        `❌ GraphQL response missing data! ${JSON.stringify(result, null, 2)}`,
+      );
+    }
+
+    return result.data;
+  }
 }
 
 class Volume {
@@ -139,9 +189,7 @@ export class RailwaySDK {
 
     this.client = new GraphQLClient(
       config.endpoint || "https://backboard.railway.com/graphql/v2",
-      {
-        headers: { Authorization: `Bearer ${this.config.accessToken}` },
-      },
+      { accessToken: this.config.accessToken },
     );
 
     // Initialize modules
