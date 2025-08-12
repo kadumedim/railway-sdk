@@ -33,6 +33,12 @@ export class GraphQLClient {
     };
   }
 
+  /**
+   * Makes a GraphQL request to the configured endpoint
+   * @param query - The GraphQL query string
+   * @param variables - Optional variables for the GraphQL query
+   * @returns Promise resolving to the query result data
+   */
   async request<T = unknown>(
     query: string,
     variables?: Record<string, unknown>,
@@ -74,6 +80,11 @@ export class GraphQLClient {
 class Volume {
   constructor(private client: GraphQLClient) {}
 
+  /**
+   * Creates a new volume in a Railway project
+   * @param volumeData - Volume creation parameters
+   * @returns Promise resolving to the created volume data
+   */
   async createVolume(volumeData: CreateVolumeMutationVariables) {
     const result = await this.client.request<CreateVolumeMutation>(
       volume.createVolumeMutation,
@@ -82,6 +93,11 @@ class Volume {
     return result.volumeCreate;
   }
 
+  /**
+   * Deletes a volume from a Railway project
+   * @param volumeId - The ID of the volume to delete
+   * @returns Promise resolving to the deletion result
+   */
   async deleteVolume(volumeId: string) {
     const result = await this.client.request<DeleteVolumeMutation>(
       volume.deleteVolumeMutation,
@@ -94,11 +110,21 @@ class Volume {
 class Account {
   constructor(private client: GraphQLClient) {}
 
+  /**
+   * Retrieves the current user's account information
+   * @returns Promise resolving to the current user's data
+   */
   async getMe() {
     const { me } = await this.client.request<GetMeQuery>(account.getMeQuery);
     return me;
   }
 
+  /**
+   * Creates a new API token
+   * @param name - The name for the API token
+   * @param teamId - Optional team ID to associate the token with
+   * @returns Promise resolving to the created API token data
+   */
   async createApiToken(name: string, teamId: string | null = null) {
     const result = await this.client.request<CreateApiTokenMutation>(
       account.createApiTokenMutation,
@@ -107,6 +133,11 @@ class Account {
     return result.apiTokenCreate;
   }
 
+  /**
+   * Deletes an API token
+   * @param id - The ID of the API token to delete
+   * @returns Promise resolving to the deletion result
+   */
   async deleteApiToken(id: string) {
     const result = await this.client.request<DeleteApiTokenMutation>(
       account.deleteApiTokenMutation,
@@ -119,6 +150,10 @@ class Account {
 class Project {
   constructor(private client: GraphQLClient) {}
 
+  /**
+   * Retrieves all projects associated with the current token
+   * @returns Promise resolving to an array of project edges
+   */
   async getProjects() {
     const result = await this.client.request<GetProjectsQuery>(
       project.getProjectsQuery,
@@ -126,6 +161,11 @@ class Project {
     return result.projects?.edges;
   }
 
+  /**
+   * Retrieves a specific project by ID
+   * @param id - The project ID
+   * @returns Promise resolving to the project data
+   */
   async getProject(id: string) {
     const result = await this.client.request<GetProjectQuery>(
       project.getProjectQuery,
@@ -136,6 +176,11 @@ class Project {
     return result.project;
   }
 
+  /**
+   * Creates a new project
+   * @param projectData - Project creation parameters
+   * @returns Promise resolving to the created project data
+   */
   async createProject(projectData: CreateProjectMutationVariables) {
     const result = await this.client.request<CreateProjectMutation>(
       project.createProjectMutation,
@@ -144,6 +189,11 @@ class Project {
     return result.projectCreate;
   }
 
+  /**
+   * Deletes a project
+   * @param id - The ID of the project to delete
+   * @returns Promise resolving to the deletion result
+   */
   async deleteProject(id: string) {
     const result = await this.client.request<DeleteProjectMutation>(
       project.deleteProjectMutation,
@@ -156,6 +206,11 @@ class Project {
 class Service {
   constructor(private client: GraphQLClient) {}
 
+  /**
+   * Retrieves all services for a specific project
+   * @param projectId - The project ID to get services for
+   * @returns Promise resolving to an array of service edges
+   */
   async getServices(projectId: string) {
     const result = await this.client.request<GetProjectQuery>(
       service.getServicesQuery,
@@ -166,6 +221,11 @@ class Service {
     return result.project?.services?.edges;
   }
 
+  /**
+   * Creates a new service in a project
+   * @param serviceData - Service creation parameters
+   * @returns Promise resolving to the created service data
+   */
   async createService(serviceData: CreateServiceMutationVariables) {
     const result = await this.client.request<CreateServiceMutation>(
       service.createServiceMutation,
