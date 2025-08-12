@@ -21,6 +21,10 @@ export interface SDKConfig {
   headers?: Record<string, string>;
 }
 
+/**
+ * @internal
+ * Internal GraphQL client for making requests to Railway's API
+ */
 export class GraphQLClient {
   private endpoint: string;
   private headers: Record<string, string>;
