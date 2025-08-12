@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["src/index.ts", "src/wrapper.ts", "src/wrappers/account/index.ts", "src/wrappers/project/index.ts", "src/wrappers/service/index.ts", "src/wrappers/volume/index.ts"],
+    "plugin": ["typedoc-plugin-markdown"],
+    "cleanOutputDir": true,
+    "readme": "none",
+    "out": "docs"
+  }
