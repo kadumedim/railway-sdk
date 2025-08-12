@@ -6,7 +6,11 @@
 
 # Class: GraphQLClient
 
-Defined in: [wrapper.ts:24](https://github.com/kadumedim/sdk/blob/d9e2a4df04524ab5dba6afa11a8d3d1d683a52ff/src/wrapper.ts#L24)
+Defined in: [wrapper.ts:28](https://github.com/kadumedim/sdk/blob/cc2c31c4f88817d8217cd214e265961cbc4ebcac/src/wrapper.ts#L28)
+
+**`Internal`**
+
+Internal GraphQL client for making requests to Railway's API
 
 ## Constructors
 
@@ -14,7 +18,7 @@ Defined in: [wrapper.ts:24](https://github.com/kadumedim/sdk/blob/d9e2a4df04524a
 
 > **new GraphQLClient**(`endpoint`, `config?`): `GraphQLClient`
 
-Defined in: [wrapper.ts:28](https://github.com/kadumedim/sdk/blob/d9e2a4df04524ab5dba6afa11a8d3d1d683a52ff/src/wrapper.ts#L28)
+Defined in: [wrapper.ts:32](https://github.com/kadumedim/sdk/blob/cc2c31c4f88817d8217cd214e265961cbc4ebcac/src/wrapper.ts#L32)
 
 #### Parameters
 
@@ -36,7 +40,7 @@ Defined in: [wrapper.ts:28](https://github.com/kadumedim/sdk/blob/d9e2a4df04524a
 
 > **request**\<`T`\>(`query`, `variables?`): `Promise`\<`T`\>
 
-Defined in: [wrapper.ts:42](https://github.com/kadumedim/sdk/blob/d9e2a4df04524ab5dba6afa11a8d3d1d683a52ff/src/wrapper.ts#L42)
+Defined in: [wrapper.ts:46](https://github.com/kadumedim/sdk/blob/cc2c31c4f88817d8217cd214e265961cbc4ebcac/src/wrapper.ts#L46)
 
 Makes a GraphQL request to the configured endpoint
 

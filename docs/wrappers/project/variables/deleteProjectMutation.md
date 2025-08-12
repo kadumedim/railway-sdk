@@ -8,4 +8,4 @@
 
 > `const` **deleteProjectMutation**: "\n  mutation deleteProject($id: String!) \{\n    projectDelete(id: $id)\n  \}\n"
 
-Defined in: [wrappers/project/deleteProject.ts:1](https://github.com/kadumedim/sdk/blob/d9e2a4df04524ab5dba6afa11a8d3d1d683a52ff/src/wrappers/project/deleteProject.ts#L1)
+Defined in: [wrappers/project/deleteProject.ts:1](https://github.com/kadumedim/sdk/blob/cc2c31c4f88817d8217cd214e265961cbc4ebcac/src/wrappers/project/deleteProject.ts#L1)

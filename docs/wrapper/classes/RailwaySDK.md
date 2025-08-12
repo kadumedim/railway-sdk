@@ -6,7 +6,7 @@
 
 # Class: RailwaySDK
 
-Defined in: [wrapper.ts:238](https://github.com/kadumedim/sdk/blob/d9e2a4df04524ab5dba6afa11a8d3d1d683a52ff/src/wrapper.ts#L238)
+Defined in: [wrapper.ts:242](https://github.com/kadumedim/sdk/blob/cc2c31c4f88817d8217cd214e265961cbc4ebcac/src/wrapper.ts#L242)
 
 ## Constructors
 
@@ -14,7 +14,7 @@ Defined in: [wrapper.ts:238](https://github.com/kadumedim/sdk/blob/d9e2a4df04524
 
 > **new RailwaySDK**(`config`): `RailwaySDK`
 
-Defined in: [wrapper.ts:247](https://github.com/kadumedim/sdk/blob/d9e2a4df04524ab5dba6afa11a8d3d1d683a52ff/src/wrapper.ts#L247)
+Defined in: [wrapper.ts:251](https://github.com/kadumedim/sdk/blob/cc2c31c4f88817d8217cd214e265961cbc4ebcac/src/wrapper.ts#L251)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [wrapper.ts:247](https://github.com/kadumedim/sdk/blob/d9e2a4df04524
 
 > `readonly` **account**: `Account`
 
-Defined in: [wrapper.ts:242](https://github.com/kadumedim/sdk/blob/d9e2a4df04524ab5dba6afa11a8d3d1d683a52ff/src/wrapper.ts#L242)
+Defined in: [wrapper.ts:246](https://github.com/kadumedim/sdk/blob/cc2c31c4f88817d8217cd214e265961cbc4ebcac/src/wrapper.ts#L246)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [wrapper.ts:242](https://github.com/kadumedim/sdk/blob/d9e2a4df04524
 
 > `readonly` **project**: `Project`
 
-Defined in: [wrapper.ts:243](https://github.com/kadumedim/sdk/blob/d9e2a4df04524ab5dba6afa11a8d3d1d683a52ff/src/wrapper.ts#L243)
+Defined in: [wrapper.ts:247](https://github.com/kadumedim/sdk/blob/cc2c31c4f88817d8217cd214e265961cbc4ebcac/src/wrapper.ts#L247)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [wrapper.ts:243](https://github.com/kadumedim/sdk/blob/d9e2a4df04524
 
 > `readonly` **service**: `Service`
 
-Defined in: [wrapper.ts:244](https://github.com/kadumedim/sdk/blob/d9e2a4df04524ab5dba6afa11a8d3d1d683a52ff/src/wrapper.ts#L244)
+Defined in: [wrapper.ts:248](https://github.com/kadumedim/sdk/blob/cc2c31c4f88817d8217cd214e265961cbc4ebcac/src/wrapper.ts#L248)
 
 ***
 
@@ -56,4 +56,4 @@ Defined in: [wrapper.ts:244](https://github.com/kadumedim/sdk/blob/d9e2a4df04524
 
 > `readonly` **volume**: `Volume`
 
-Defined in: [wrapper.ts:245](https://github.com/kadumedim/sdk/blob/d9e2a4df04524ab5dba6afa11a8d3d1d683a52ff/src/wrapper.ts#L245)
+Defined in: [wrapper.ts:249](https://github.com/kadumedim/sdk/blob/cc2c31c4f88817d8217cd214e265961cbc4ebcac/src/wrapper.ts#L249)

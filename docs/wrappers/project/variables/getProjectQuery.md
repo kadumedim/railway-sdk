@@ -8,4 +8,4 @@
 
 > `const` **getProjectQuery**: "\n    query getProject($projectId: String!) \{\n        project(id: $projectId) \{\n            createdAt\n            deletedAt\n            description\n            expiredAt\n            id\n            isPublic\n            isTempProject\n            name\n            updatedAt\n            services \{\n            edges \{\n                node \{\n                createdAt\n                deletedAt\n                projectId\n                id\n                name\n                icon\n                featureFlags\n                updatedAt\n                \}\n            \}\n            \}\n        \}\n    \}\n"
 
-Defined in: [wrappers/project/getProject.ts:1](https://github.com/kadumedim/sdk/blob/d9e2a4df04524ab5dba6afa11a8d3d1d683a52ff/src/wrappers/project/getProject.ts#L1)
+Defined in: [wrappers/project/getProject.ts:1](https://github.com/kadumedim/sdk/blob/cc2c31c4f88817d8217cd214e265961cbc4ebcac/src/wrappers/project/getProject.ts#L1)
