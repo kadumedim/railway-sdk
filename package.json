@@ -13,6 +13,7 @@
     "@graphql-codegen/typescript": "^4.1.6",
     "@graphql-codegen/typescript-operations": "^4.6.1",
     "@types/bun": "latest",
+    "typedoc": "^0.28.10",
     "typescript": "^5.9.2",
     "unbuild": "^3.6.0",
     "zod": "^4.0.17"
