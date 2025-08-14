@@ -109,6 +109,8 @@ bun run codegen
 
 - **Subscriptions**: Real-time updates on Railway resources like deployments, events, and log streaming.
 
+- **Tests**: Yep, they're needed.
+
 ## License
 
 MIT
